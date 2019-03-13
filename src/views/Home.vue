@@ -55,7 +55,7 @@
                 slots: [
                     {
                         flex: 1,
-                        values: ['已开工', '2019年'],
+                        values: ['2019年', '已开工'],
                         className: 'slot1',
                         textAlign: 'right'
                     }, {
@@ -64,7 +64,7 @@
                         className: 'slot2'
                     }, {
                         flex: 1,
-                        values: ['已开工'],
+                        values: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月','已开工'],
                         className: 'slot3',
                         textAlign: 'left'
                     }
@@ -94,7 +94,7 @@
                     return;
                 }
                 //校验手机号
-                let myReg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+                let myReg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}|19[0-9]{1}))+\d{8})$/;
                 if (!myReg.test(this.info.userTel)) {
                     alert('手机号有误');
                     return;
@@ -113,14 +113,14 @@
                 this.pickerFlag = true;
                 document.activeElement.blur();
                 this.popupVisible = !this.popupVisible;
-                this.info.date = '已开工';
+                this.info.date = '2019年';
             },
             onValuesChange(picker, values) {
                 let data = picker.getValues();
-                if (values[0] === '已开工') {
-                    picker.setSlotValues(1, ['已开工']);
-                } else {
+                if (values[0] !== '已开工') {
                     picker.setSlotValues(1, ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']);
+                } else {
+                    picker.setSlotValues(1, ['已开工']);
                 }
                 // window.console.log(picker.getValues());
                 if (this.pickerFlag) {

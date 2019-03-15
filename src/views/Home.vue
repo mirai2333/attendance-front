@@ -1,8 +1,9 @@
 <template>
     <div class="home_container">
         <img src="../images/banner.jpg" alt="标题图片"/>
-        <div class="attendance_box">
-            <h1 style="margin-bottom: 0.07rem">业主签到</h1>
+        <div class="trans">
+<div class="attendance_box">
+            <h1 style="margin-bottom: 0.07rem;margin-top:0px;padding-top:0.24rem !important">业主签到</h1>
             <span style="color: #6f7180">请用报名的手机号签到</span>
             <el-form @submit.native.prevent :model="info">
                 <input type="hidden" v-model="info.city">
@@ -21,12 +22,18 @@
                     <el-button type="danger" class="submitButton" round @click="doAttendance">立即签到</el-button>
                 </el-form-item>
             </el-form>
+           
         </div>
-        <p>轻松装承诺：您的信息将被严格保密</p>
+           <p>轻松装承诺：您的信息将被严格保密</p>
         <div class="gift">
-            <img src="./../images/gift.png" alt="礼物"/>
+            <img src="./../images/gift.png" alt="礼物" />
             <p>签到成功后可领取签到礼包</p>
         </div>
+        </div>
+ 
+       
+      
+        
         <mt-popup v-model="popupVisible" position="bottom">
             <div style="text-align: right;margin-top: 6px;margin-right: 2%">
                 <el-button @click="confirmDate">确定</el-button>
@@ -48,6 +55,7 @@
                     date: '',
                     city: '',
                     term: ''
+                   
                 },
                 dateType: 'text',
                 popupVisible: false,
@@ -89,8 +97,16 @@
                     return;
                 }
                 //校验输入信息
-                if (!this.info.userName || !this.info.userTel) {
-                    alert('输入内容不能为空');
+                if (!this.info.userName) {
+                    alert('姓名不能为空');
+                    return;
+                }
+                if (!this.info.userTel) {
+                    alert('手机号不能为空');
+                    return;
+                }
+                if ( !this.info.date) {
+                    alert('开工日期不能为空');
                     return;
                 }
                 //校验手机号
@@ -113,7 +129,7 @@
                 this.pickerFlag = true;
                 document.activeElement.blur();
                 this.popupVisible = !this.popupVisible;
-                this.info.date = '2019年';
+                this.info.date = '2019年1月';
             },
             onValuesChange(picker, values) {
                 let data = picker.getValues();
@@ -139,6 +155,10 @@
 </script>
 
 <style lang="less">
+.trans{
+            transform: translateY(-8%);
+
+}
     .home_container {
         position: relative;
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -148,17 +168,18 @@
 
         img {
             width: 100%;
+            
         }
 
         .attendance_box {
-            position: absolute;
+            // position: absolute;
             background-color: white;
             width: 96%;
             border-radius: 0.26rem;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 4.32rem;
-
+            // left: 50%;
+            // transform: translateY(-10%);
+            // top: 4.32rem;
+            margin: 0 auto;
             h1 {
                 color: #c62325;
             }
@@ -200,7 +221,7 @@
                     background-color: #c92425;
                     font-size: 0.5rem;
                     color: white;
-                    margin-bottom: 0.74rem;
+                    margin-bottom: 0.24rem;
                     margin-top: 0.02rem;
                     border: none;
                     outline: none;
@@ -209,10 +230,11 @@
         }
 
         p {
-            margin-top: 8rem;
+            margin-top: 0.1rem;
             font-size: 0.5rem;
             color: white;
             font-weight: bold;
+            transform: translateY(-10%);
         }
 
         .gift {
@@ -222,6 +244,7 @@
             img {
                 width: 0.6rem;
                 height: 0.6rem;
+                transform: translateY(-8%);
             }
 
             p {

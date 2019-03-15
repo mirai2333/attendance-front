@@ -1,7 +1,7 @@
 <template>
     <div class="success_container">
         <img class="titleImg" src="../images/success_ban.jpg" alt="标题图片">
-        <p>签到成功</p>
+        <p>请不要关闭页面！</p>
         <div class="myBody">
             <div class="suc_box">
                 <div class="logoBox">

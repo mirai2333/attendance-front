@@ -118,6 +118,13 @@
                     if (res.body.code === 0) {
                         alert(res.body.msg);
                         this.$router.push({name: 'home'})
+                    } else if (this.info.city === '3') {
+                        this.$router.push({
+                            name: 'BeiJing',
+                            params: {
+                                msg: res.body
+                            }
+                        });
                     } else {
                         this.$router.push({
                             name: 'success',

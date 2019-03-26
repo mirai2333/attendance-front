@@ -55,8 +55,6 @@
                     date: '',
                     city: '',
                     term: '',
-                    test:'123'
-                   
                 },
                 dateType: 'text',
                 popupVisible: false,

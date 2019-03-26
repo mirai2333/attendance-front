@@ -9,7 +9,7 @@
                 </div>
                 <p>恭喜您 {{ date | moment }} 签到成功</p>
                 <p>
-                    温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到礼包，超过时间将无法领取！！！
+                    温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到{{cityTip}}，超过时间将无法领取！！！
                 </p>
                 <p v-if="msg.includes('VIP')"><strong style="font-size: larger">您还可以参与9:30-10:30的限时抢购活动！</strong></p>
             </div>
@@ -24,13 +24,21 @@
         data() {
             return {
                 date: "",
-                msg: ""
+                msg: "",
+                city:'',
+                cityTip:'礼包'
             };
         },
         created() {
             if (this.$route.params.msg) {
                 this.msg = this.$route.params.msg.msg;
                 this.date = this.$route.params.msg.data;
+            }
+            if (this.$route.params.formData) {
+                this.city = this.$route.params.formData.city;
+                if (this.city === '16') {
+                    this.cityTip='资料';
+                }
             }
         }
     };

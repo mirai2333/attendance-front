@@ -17,6 +17,7 @@
       </div>
       <div v-if="msg.includes('尊敬的会员')">
         <div class="promotion-box">
+        
           <div style="text-align: center">
             <img style="width: 40%;" src="../../images/BeiJingKeeper.jpg" alt="北京装管二维码">
           </div>
@@ -33,6 +34,7 @@
             <div class="TikTok">
                 <img src="../../images/TikTok.jpg" alt="抖音二维码">
             </div>
+            
        </div>
     </div>
   </div>
@@ -44,7 +46,7 @@ export default {
   data() {
     return {
       date: "",
-      msg: "",
+      msg: "尊敬的会员",
     };
   },
   created() {
@@ -130,4 +132,20 @@ export default {
             }
 }
 
+.promotion-box:before,.promotion-box:after{
+    content: "";
+            position: absolute;
+            display: block;
+            width: 0.48rem;
+            height: 0.48rem;
+            background: #c62324;
+            border-radius: 50%;
+            top: 7.4rem;
+}
+.promotion-box:before{
+            left: -0.08rem;
+}
+.promotion-box:after{
+            right: -0.08rem;
+}
 </style>

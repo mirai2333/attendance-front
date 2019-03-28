@@ -45,7 +45,6 @@ export default {
     return {
       date: "",
       msg: "",
-      
     };
   },
   created() {
@@ -72,7 +71,7 @@ export default {
     width: 96%;
     background-color: white;
     border-radius: 0.2rem;
-    margin: 2% 2% 1px 2%;
+    margin: 2% 2% 0px 2%;
     padding: 5% 0 5%;
     .logo-box {
       text-align: center;
@@ -105,6 +104,7 @@ export default {
     }
   }
   .promotion-box {
+    border-top: 1px dashed #BDBDBD;
     width: 96%;
     background-color: white;
     border-radius: 0.2rem;
@@ -117,15 +117,17 @@ export default {
       }
     }
   }
-     .TikTok {
+  .TikTok {
                 width: 96%;
                 background-color: white;
                 border-radius: 0.2rem;
                 margin: 0 2%;
+                margin-top: 1px;
                 padding: 3% 0;
                 img {
                     width: 100%;
                 }
             }
 }
+
 </style>

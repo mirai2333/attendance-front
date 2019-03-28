@@ -52,7 +52,7 @@
                     userTel: '',
                     date: '',
                     city: '',
-                    term: '',
+                    term: ''
                 },
                 dateType: 'text',
                 popupVisible: false,

@@ -37,7 +37,7 @@
             if (this.$route.params.formData) {
                 this.city = this.$route.params.formData.city;
                 if (this.city === '16') {
-                    this.cityTip = '资料';
+                    this.cityTip = '资料入场';
                 }
             }
         }

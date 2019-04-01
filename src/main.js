@@ -3,7 +3,6 @@ import router from './router';
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 import 'lib-flexible';
-
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);

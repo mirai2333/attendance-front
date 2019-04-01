@@ -52,7 +52,8 @@
                     userTel: '',
                     date: '',
                     city: '',
-                    term: ''
+                    term: '',
+                    test:'123'
                 },
                 dateType: 'text',
                 popupVisible: false,

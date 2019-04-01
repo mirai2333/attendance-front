@@ -9,15 +9,20 @@
         </div>
         <div class="content-box">
           <p>恭喜您 {{ date | moment }} 签到成功</p>
-          <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到礼包，超过时间将无法领取。</p>
+          <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取资料入场，超过时间将无法领取。</p>
           <p v-if="msg.includes('VIP')">
-            <strong style="font-size: larger">您还可以参与9:30-10:30的限时抢购活动！</strong>
+            <strong style="font-size: larger;color:#C92425">您还可以凭限时抢购卡 参与9:30-10:30的爆款抢购！</strong>
           </p>
         </div>
       </div>
-      <div v-if="msg.includes('尊敬的会员')">
-        <div class="promotion-box">
-        
+      <div v-if="msg.includes('VIP')">
+           <div class="TikTok">
+                <img src="../../images/TikTok.jpg" alt="抖音二维码">
+            </div>
+      </div>
+       <div v-else>
+             <div :class='["promotion-box",msg=="已报名会员，" ? "cura":"curb"]'>
+               
           <div style="text-align: center">
             <img style="width: 40%;" src="../../images/BeiJingKeeper.jpg" alt="北京装管二维码">
           </div>
@@ -29,30 +34,32 @@
         <p
           style="margin: 5% 5%;font-size: 0.35rem;color: white"
         >感谢您前来参加轻松装建材家具家电团购盛典,我们将竭诚为您购买建材提供帮助,有任何问题都可联系轻松装宝宝或在微信公众号给我们留言,我们会第一时间收到并反馈.</p>
-      </div>
-       <div v-else>
-            <div class="TikTok">
-                <img src="../../images/TikTok.jpg" alt="抖音二维码">
-            </div>
-            
        </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "BeiJing",
   data() {
     return {
       date: "",
-      msg: "尊敬的会员",
+      msg: "尊敬的会员，",
     };
   },
   created() {
     if (this.$route.params.msg) {
-      this.msg = this.$route.params.msg.msg;
+      var xname=this.$route.params.msg.msg;
+      if(xname.includes('尊敬的会员')){
+        this.msg="已报名会员，"
+         this.date = this.$route.params.msg.data;
+      }else{
+        this.msg = this.$route.params.msg.msg;
       this.date = this.$route.params.msg.data;
+      }
+
     }
   }
 };
@@ -131,8 +138,41 @@ export default {
                 }
             }
 }
-
-.promotion-box:before,.promotion-box:after{
+// .promotion-box:before,.promotion-box:after{
+//     content: "";
+//             position: absolute;
+//             display: block;
+//             width: 0.48rem;
+//             height: 0.48rem;
+//             background: #c62324;
+//             border-radius: 50%;
+//             // top: 7.4rem;
+            
+// }
+// .promotion-box:before{
+//             left: -0.08rem;
+// }
+// .promotion-box:after{
+//             right: -0.08rem;
+// }
+.cura:before,.cura:after{
+    content: "";
+            position: absolute;
+            display: block;
+            width: 0.48rem;
+            height: 0.48rem;
+            background: #c62324;
+            border-radius: 50%;
+            top: 7.9rem;
+            
+}
+.cura:before{
+            left: -0.08rem;
+}
+.cura:after{
+            right: -0.08rem;
+}
+.curb:before,.curb:after{
     content: "";
             position: absolute;
             display: block;
@@ -141,11 +181,12 @@ export default {
             background: #c62324;
             border-radius: 50%;
             top: 7.4rem;
+            
 }
-.promotion-box:before{
+.curb:before{
             left: -0.08rem;
 }
-.promotion-box:after{
+.curb:after{
             right: -0.08rem;
 }
 </style>

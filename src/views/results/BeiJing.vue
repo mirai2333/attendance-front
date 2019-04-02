@@ -9,7 +9,8 @@
         </div>
         <div class="content-box">
           <p>恭喜您 {{ date | moment }} 签到成功</p>
-          <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取资料入场，超过时间将无法领取。</p>
+          <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到资料，超过时间将无法领取。</p>
+          <!-- <p v-if="msg.includes('VIP')"> 之前的版本是这样判断-->
           <p v-if="msg.includes('VIP')">
             <strong style="font-size: larger;color:#C92425">您还可以凭限时抢购卡参与9:30-10:30的爆款抢购！</strong>
           </p>
@@ -22,7 +23,6 @@
       </div>
        <div v-else>
              <div :class='["promotion-box",msg=="已报名会员，" ? "cura":"curb"]'>
-               
           <div style="text-align: center">
             <img style="width: 40%;" src="../../images/BeiJingKeeper.jpg" alt="北京装管二维码">
           </div>
@@ -46,22 +46,27 @@ export default {
   data() {
     return {
       date: "",
-      msg: "尊敬的会员，",
+      msg: "",
     };
   },
   created() {
-    if (this.$route.params.msg) {
-      var xname=this.$route.params.msg.msg;
-      if(xname.includes('尊敬的会员')){
-        this.msg="已报名会员，"
-         this.date = this.$route.params.msg.data;
-      }else{
-        this.msg = this.$route.params.msg.msg;
-      this.date = this.$route.params.msg.data;
+    // this.$route.params.msg里面有code，msg，data三个参数
+    var xname=this.$route.params.msg.msg
+ 
+    //  未报名
+      if(xname==0){
+        this.msg==null
       }
-
+      // 报名未加装管
+       if(xname==1){
+        this.msg = "已报名会员，";
+      }
+      // 已报名已加装管
+    if (xname==2) {
+        this.msg="尊敬的VIP会员，"
+      }
+this.date = this.$route.params.msg.data;
     }
-  }
 };
 </script>
 

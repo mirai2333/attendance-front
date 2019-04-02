@@ -115,7 +115,7 @@
                     return;
                 }
                 //发送请求
-                this.$http.get('/attendance/doAttendance', {params: this.info}).then(res => {
+                this.$http.get('http://mall.qszhuang.com/attendance/doAttendance', {params: this.info}).then(res => {
                     if (res.body.code === 0) {
                         alert(res.body.msg);
                         this.$router.push({name: 'home'})

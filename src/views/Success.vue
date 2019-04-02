@@ -11,7 +11,7 @@
                 <p>
                     温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到{{cityTip}}，超过时间将无法领取。
                 </p>
-                <p v-if="msg.includes('VIP')"><strong style="font-size: larger">您还可以参与9:30-10:30的限时抢购活动！</strong></p>
+                <p v-if="xname==2"><strong style="font-size: larger">您还可以参与9:30-10:30的限时抢购活动！</strong></p>
             </div>
             <div class="TikTok">
                 <img src="../images/TikTok.jpg" alt="抖音二维码">
@@ -30,9 +30,18 @@
             };
         },
         created() {
-            if (this.$route.params.msg) {
-                this.msg = this.$route.params.msg.msg;
-                this.date = this.$route.params.msg.data;
+            // this.$route.params.msg里面有code，msg，data三个参数
+             var xname=this.$route.params.msg.msg
+            if(xname==0){
+                this.msg==null
+            }
+            // 报名未加装管
+            if(xname==1){
+            this.msg = "尊敬的会员，";
+            }
+            // 已报名已加装管
+            if (xname==2) {
+            this.msg="尊敬的VIP会员，"
             }
             if (this.$route.params.formData) {
                 this.city = this.$route.params.formData.city;

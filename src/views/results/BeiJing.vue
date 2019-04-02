@@ -22,7 +22,8 @@
             </div>
       </div>
        <div v-else>
-             <div :class='["promotion-box",msg=="已报名会员，" ? "cura":"curb"]'>
+                <div class="promotion-box">
+                 <div class="cur"></div>
           <div style="text-align: center">
             <img style="width: 40%;" src="../../images/BeiJingKeeper.jpg" alt="北京装管二维码">
           </div>
@@ -117,13 +118,39 @@ this.date = this.$route.params.msg.data;
       }
     }
   }
-  .promotion-box {
+   .promotion-box {
     border-top: 1px dashed #BDBDBD;
     width: 96%;
     background-color: white;
     border-radius: 0.2rem;
     margin: 0 2%;
-    padding: 5% 0 5%;
+    // padding: 5% 0 5%;
+    
+    padding:0 0 5%;
+    .cur{
+      width: 100%;
+      height: 20px;
+      background-color: white;
+      position: relative;
+    &:after,&:before{
+      content: "";
+      position: absolute;
+            display: inline-block;
+            width: 0.48rem;
+            height: 0.48rem;
+            background: #c62324;
+            border-radius: 50%;
+            top: -0.21rem;
+    }
+    &:before{
+      float: left;
+      left: -0.22rem;
+    }
+    &:after{
+      float: right;
+      right: -0.22rem;
+    }
+    }
     .img-hint-box {
       text-align: center;
       p {
@@ -143,55 +170,5 @@ this.date = this.$route.params.msg.data;
                 }
             }
 }
-// .promotion-box:before,.promotion-box:after{
-//     content: "";
-//             position: absolute;
-//             display: block;
-//             width: 0.48rem;
-//             height: 0.48rem;
-//             background: #c62324;
-//             border-radius: 50%;
-//             // top: 7.4rem;
-            
-// }
-// .promotion-box:before{
-//             left: -0.08rem;
-// }
-// .promotion-box:after{
-//             right: -0.08rem;
-// }
-.cura:before,.cura:after{
-    content: "";
-            position: absolute;
-            display: block;
-            width: 0.48rem;
-            height: 0.48rem;
-            background: #c62324;
-            border-radius: 50%;
-            top: 7.9rem;
-            
-}
-.cura:before{
-            left: -0.08rem;
-}
-.cura:after{
-            right: -0.08rem;
-}
-.curb:before,.curb:after{
-    content: "";
-            position: absolute;
-            display: block;
-            width: 0.48rem;
-            height: 0.48rem;
-            background: #c62324;
-            border-radius: 50%;
-            top: 7.4rem;
-            
-}
-.curb:before{
-            left: -0.08rem;
-}
-.curb:after{
-            right: -0.08rem;
-}
+
 </style>

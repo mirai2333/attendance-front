@@ -11,7 +11,7 @@
           <p>恭喜您 {{ date | moment }} 签到成功</p>
           <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取资料入场，超过时间将无法领取。</p>
           <p v-if="msg.includes('VIP')">
-            <strong style="font-size: larger;color:#C92425">您还可以凭限时抢购卡 参与9:30-10:30的爆款抢购！</strong>
+            <strong style="font-size: larger;color:#C92425">您还可以凭限时抢购卡参与9:30-10:30的爆款抢购！</strong>
           </p>
         </div>
       </div>

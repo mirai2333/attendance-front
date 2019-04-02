@@ -26,7 +26,8 @@
                 date: "",
                 msg: "",
                 city: '3',
-                cityTip: '礼包'
+                cityTip: '礼包',
+               
             };
         },
         created() {
@@ -43,6 +44,8 @@
             if (xname==2) {
             this.msg="尊敬的VIP会员，"
             }
+            this.date = this.$route.params.msg.data;
+
             if (this.$route.params.formData) {
                 this.city = this.$route.params.formData.city;
                 if (this.city === '16') {

@@ -53,7 +53,7 @@
                     date: '',
                     city: '',
                     term: '',
-                    test:'test'
+                   
                 },
                 dateType: 'text',
                 popupVisible: false,

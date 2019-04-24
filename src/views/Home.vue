@@ -53,7 +53,7 @@
                     date: '',
                     city: '',
                     term: '',
-                    
+                    test:'test'
                 },
                 dateType: 'text',
                 popupVisible: false,
@@ -117,6 +117,7 @@
                 //发送请求
                 this.$http.get('http://mall.qszhuang.com/attendance/doAttendance', {params: this.info}).then(res => {
                     if (res.body.code === 0) {
+                        window.console.log(res)
                         alert(res.body.msg);
                         this.$router.push({name: 'home'})
                     } else if (this.info.city === '3') {
@@ -126,14 +127,27 @@
                                 msg: res.body
                             }
                         });
-                    } else {
+                    } else if(this.info.city === '1'){
                         this.$router.push({
-                            name: 'success',
-                            params: {
-                                msg: res.body,
-                                formData: this.info
+                            name:'HangZhou',
+                            params:{
+                                msg: res.body
                             }
-                        });
+                        })
+                    } else if(this.info.city === '16'){
+                        this.$router.push({
+                            name:'TianJin',
+                            params:{
+                                msg: res.body
+                            }
+                        })
+                    } else if(this.info.city === '14'){
+                        this.$router.push({
+                            name:'ShangHai',
+                            params:{
+                                msg: res.body
+                            }
+                        })
                     }
                 });
             },

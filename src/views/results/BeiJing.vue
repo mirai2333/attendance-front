@@ -7,7 +7,7 @@
         <div class="logo-box">
           <img id="logo" src="../../images/logo.png" alt="Logo">
         </div>
-        <div class="content-box">
+        <div class="content-box" v-show="this.code==1">
           <p>恭喜您 {{ date | moment }} 签到成功</p>
           <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到资料，超过时间将无法领取。</p>
           <!-- <p v-if="msg.includes('VIP')"> 之前的版本是这样判断-->
@@ -25,7 +25,7 @@
                 <div class="promotion-box">
                  <div class="cur"></div>
           <div style="text-align: center">
-            <img style="width: 40%;" src="../../images/BeiJingKeeper.jpg" alt="北京装管二维码">
+            <img style="width: 40%;" src="../../images/BeiJingKeeper-2.jpg" alt="北京装管二维码">
           </div>
           <div class="img-hint-box">
             <p style="margin-bottom: 0">长按识别二维码</p>
@@ -48,22 +48,25 @@ export default {
     return {
       date: "",
       msg: "",
+      xname:'',
+      code:''
     };
   },
   created() {
     // this.$route.params.msg里面有code，msg，data三个参数
-    var xname=this.$route.params.msg.msg
+    window.console.log(this.$route.params.msg);
+     this.xname=this.$route.params.msg.msg
  
     //  未报名
-      if(xname==0){
+      if(this.xname==0){
         this.msg==null
       }
       // 报名未加装管
-       if(xname==1){
+       if(this.xname==1){
         this.msg = "已报名会员，";
       }
       // 已报名已加装管
-    if (xname==2) {
+    if (this.xname==2) {
         this.msg="尊敬的VIP会员，"
       }
 this.date = this.$route.params.msg.data;

@@ -7,7 +7,7 @@
         <div class="logo-box">
           <img id="logo" src="../../images/logo.png" alt="Logo">
         </div>
-        <div class="content-box" v-show="this.code==1">
+        <div class="content-box" >
           <p>恭喜您 {{ date | moment }} 签到成功</p>
           <p>温馨提示：{{msg}}请勿关闭页面，并于15分钟内领取签到资料，超过时间将无法领取。</p>
           <!-- <p v-if="msg.includes('VIP')"> 之前的版本是这样判断-->
@@ -48,8 +48,7 @@ export default {
     return {
       date: "",
       msg: "",
-      xname:'',
-      code:''
+      xname:''
     };
   },
   created() {

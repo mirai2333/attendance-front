@@ -53,7 +53,7 @@
                     date: '',
                     city: '',
                     term: '',
-                   
+                 
                 },
                 dateType: 'text',
                 popupVisible: false,
@@ -117,7 +117,6 @@
                 //发送请求
                 this.$http.get('http://mall.qszhuang.com/attendance/doAttendance', {params: this.info}).then(res => {
                     if (res.body.code === 0) {
-                        window.console.log(res)
                         alert(res.body.msg);
                         this.$router.push({name: 'home'})
                     } else if (this.info.city === '3') {
